@@ -6,7 +6,9 @@ public class CustomEvent : ScriptableObject
 {
 	public enum EventType
 	{
-		DayEnded
+		DayEnded,
+		EscapeThroughDoor,
+		EscapeThroughWindow
 	}
 	
 	[SerializeField] private EventType eventType;

@@ -31,7 +31,7 @@ public class MainHeroMovementController : MonoBehaviour
 	[SerializeField] private float forwardMoveSpeed;
 	[SerializeField] private float backwardMoveSpeed;
 	[SerializeField] private float rotationSpeed;
-	[SerializeField] private float liftHeight;
+	[SerializeField] private float maxAngleToDrive;
 	
 	[Header("Configuration")]
 	[SerializeField] private Rigidbody rb;
@@ -71,6 +71,12 @@ public class MainHeroMovementController : MonoBehaviour
 		moveBackward.canceled -= OnMoveBackwardEnded;
 		rotateRight.canceled -= OnRotateRightEnded;
 		rotateLeft.canceled -= OnRotateLeftEnded;
+		
+		movingForward = false;
+		movingBackward = false;
+		rotatingRight = false;
+		rotatingLeft = false;
+		IsLifted = false;
 	}
 
 	private void OnLiftToggled(InputAction.CallbackContext obj)
@@ -118,26 +124,36 @@ public class MainHeroMovementController : MonoBehaviour
 		rotatingLeft = false;
 	}
 
-	private void FixedUpdate()
+	private void Update()
 	{
+		if (Vector3.Angle(Vector3.down, -transform.up) > maxAngleToDrive)
+		{
+			return;
+		}
+
+		if (!movingForward && !movingBackward && !rotatingRight && !rotatingLeft)
+		{
+			return;
+		}
+		
 		Vector3 position = rb.position;
 		Vector3 rotation = rb.rotation.eulerAngles;
 		if (movingForward)
 		{
-			position += forwardMoveSpeed * Time.fixedDeltaTime * transform.forward;
+			position += forwardMoveSpeed * Time.deltaTime * transform.forward;
 		}
 		else if (movingBackward)
 		{
-			position -= backwardMoveSpeed * Time.fixedDeltaTime * transform.forward;
+			position -= backwardMoveSpeed * Time.deltaTime * transform.forward;
 		}
 
 		if (rotatingRight)
 		{
-			rotation += rotationSpeed * Time.fixedDeltaTime * transform.up;
+			rotation += rotationSpeed * Time.deltaTime * transform.up;
 		}
 		else if (rotatingLeft)
 		{
-			rotation -= rotationSpeed * Time.fixedDeltaTime * transform.up;
+			rotation -= rotationSpeed * Time.deltaTime * transform.up;
 		}
 		rb.Move(position, Quaternion.Euler(rotation));
 	}

@@ -27,19 +27,13 @@ public class DailyManager : MonoBehaviour
 		get => currentDay;
 		set
 		{
-			currentDayText.text = $"Day {value}";
 			currentDay = value;
 		}
 	}
 
-	private void Awake()
-	{
-		CurrentDay = 1;
-	}
-
 	private void OnEnable()
 	{
-		timerCoroutine = StartCoroutine(StartDayTimer());
+		StartNewDay();
 	}
 
 	private void OnDisable()
@@ -48,10 +42,17 @@ public class DailyManager : MonoBehaviour
 		timerCoroutine = null;
 	}
 
+	private void StartNewDay()
+	{
+		++CurrentDay;
+		timerCoroutine = StartCoroutine(StartDayTimer());
+	}
+
 	private IEnumerator StartDayTimer()
 	{
 		for (float time = 0; time < dayDuration; time += tickDuration)
 		{
+			Debug.Log($"Time: {time}");
 			yield return new WaitForSeconds(tickDuration);
 			// TODO: time progress bar
 		}
@@ -59,6 +60,7 @@ public class DailyManager : MonoBehaviour
 		dimmerAnim.SetTrigger(DimAnimatorProperty);
 		yield return new WaitForSeconds(dimDelay);
 		dayEnded.Fire();
-		++CurrentDay;
+		yield return new WaitForSeconds(dimDelay);
+		StartNewDay();
 	}
 }
