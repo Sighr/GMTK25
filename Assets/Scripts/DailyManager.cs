@@ -27,6 +27,7 @@ public class DailyManager : MonoBehaviour
 		get => currentDay;
 		set
 		{
+			currentDayText.text = $"Day {value}";
 			currentDay = value;
 		}
 	}
@@ -52,7 +53,6 @@ public class DailyManager : MonoBehaviour
 	{
 		for (float time = 0; time < dayDuration; time += tickDuration)
 		{
-			Debug.Log($"Time: {time}");
 			yield return new WaitForSeconds(tickDuration);
 			// TODO: time progress bar
 		}
