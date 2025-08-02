@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 83365901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 3.189, y: 0, z: 1.89}
+  m_LocalPosition: {x: 2.907, y: 0, z: 1.642}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2944,7 +2944,7 @@ GameObject:
   - component: {fileID: 1180229587}
   m_Layer: 11
   m_Name: Cylinder
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3684,7 +3684,7 @@ Transform:
   m_GameObject: {fileID: 1550721264}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.189, y: 0, z: 1.89}
+  m_LocalPosition: {x: 2.907, y: 0, z: 1.642}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4945,7 +4945,7 @@ Transform:
   m_GameObject: {fileID: 2063280816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.189, y: 0, z: 1.96}
+  m_LocalPosition: {x: 2.907, y: 0, z: 1.836}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13118,7 +13118,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &5653640432712393421
 MeshFilter:
   m_ObjectHideFlags: 0
