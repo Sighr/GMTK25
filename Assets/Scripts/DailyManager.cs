@@ -1,18 +1,42 @@
 ﻿using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class DailyManager : MonoBehaviour
 {
+	private static readonly int DimAnimatorProperty = Animator.StringToHash("Dim");
+
 	[Header("Settings")]
 	[SerializeField] private float dayDuration;
 	[SerializeField] private float tickDuration;
+	[SerializeField] private float dimDelay = 1f;
 	
 	[Header("Configuration")]
 	[SerializeField] private CustomEvent dayEnded;
+	[SerializeField] private Animator dimmerAnim;
+	[SerializeField] private TextMeshProUGUI currentDayText;
+	
+	[Header("Runtime")]
+	[SerializeField] private int currentDay;
 
 	private Coroutine timerCoroutine;
-	
+
+	private int CurrentDay
+	{
+		get => currentDay;
+		set
+		{
+			currentDayText.text = $"Day {value}";
+			currentDay = value;
+		}
+	}
+
+	private void Awake()
+	{
+		CurrentDay = 1;
+	}
+
 	private void OnEnable()
 	{
 		timerCoroutine = StartCoroutine(StartDayTimer());
@@ -24,18 +48,17 @@ public class DailyManager : MonoBehaviour
 		timerCoroutine = null;
 	}
 
-	IEnumerator StartDayTimer()
+	private IEnumerator StartDayTimer()
 	{
 		for (float time = 0; time < dayDuration; time += tickDuration)
 		{
 			yield return new WaitForSeconds(tickDuration);
 			// TODO: time progress bar
 		}
-		OnDayEnded();
-	}
-
-	private void OnDayEnded()
-	{
+		
+		dimmerAnim.SetTrigger(DimAnimatorProperty);
+		yield return new WaitForSeconds(dimDelay);
 		dayEnded.Fire();
+		++CurrentDay;
 	}
 }
