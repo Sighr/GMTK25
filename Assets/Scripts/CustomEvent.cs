@@ -8,7 +8,9 @@ public class CustomEvent : ScriptableObject
 	{
 		DayEnded,
 		EscapeThroughDoor,
-		EscapeThroughWindow
+		EscapeThroughWindow,
+		MainHeroStuck,
+		MainHeroReturnedToStation
 	}
 	
 	[SerializeField] private EventType eventType;

@@ -119,6 +119,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &31760110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 31760111}
+  m_Layer: 0
+  m_Name: BookTrampoline_Base (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &31760111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 31760110}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6597238, y: -0.254489, z: -0.2544889, w: 0.6597237}
+  m_LocalPosition: {x: -0.742, y: 0.036, z: -0.269}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163592320}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: -42.188}
+--- !u!1 &37314274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 37314275}
+  m_Layer: 0
+  m_Name: BookTrampoline_Base (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &37314275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37314274}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.77868867, y: 0.07823345, z: 0.062229592, w: 0.6193958}
+  m_LocalPosition: {x: -1.829, y: 0.036, z: -0.574}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163592320}
+  m_LocalEulerAnglesHint: {x: -103, y: 0, z: 11.473999}
 --- !u!1 &62830125
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +417,7 @@ MonoBehaviour:
   maxAngleToDrive: 60
   rb: {fileID: 83365904}
   anim: {fileID: 83365905}
+  heroStuck: {fileID: 11400000, guid: 9b4d2af2176839b45b35a2812e4023ca, type: 2}
 --- !u!54 &83365904
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -420,6 +483,37 @@ MonoBehaviour:
   rb: {fileID: 83365904}
   baseTransform: {fileID: 1550721265}
   movementController: {fileID: 83365903}
+--- !u!1 &232620904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 232620905}
+  m_Layer: 0
+  m_Name: BookTrampoline_Base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &232620905
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232620904}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -3.2420392, y: 0.03555307, z: -0.759}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163592320}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &263800655
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +692,8 @@ MonoBehaviour:
   - {fileID: 296302268}
   - {fileID: 1160931348}
   objectsToEnable: []
+  rbsToDisable: []
+  rbsToEnable: []
   useNormal: 0
   normal: {x: 0, y: 0, z: 0}
   maxNormalsAngle: 0
@@ -1190,7 +1286,9 @@ Transform:
   - {fileID: 954503185}
   - {fileID: 427948736}
   - {fileID: 1550721265}
+  - {fileID: 2063280817}
   - {fileID: 296302269}
+  - {fileID: 1163592320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650820925
@@ -2423,6 +2521,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1161533002}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1163592319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1163592320}
+  m_Layer: 0
+  m_Name: BookTrampoline_Bases
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1163592320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1163592319}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 232620905}
+  - {fileID: 1184620607}
+  - {fileID: 31760111}
+  - {fileID: 37314275}
+  m_Father: {fileID: 621247594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1165924623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,6 +2718,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180229585}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1184620606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1184620607}
+  m_Layer: 0
+  m_Name: BookTrampoline_Base (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1184620607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184620606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.6931525, y: 0.13978463, z: 0.13978457, w: 0.69315237}
+  m_LocalPosition: {x: -1.089, y: 0.036, z: -1.405}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1163592320}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 22.803}
 --- !u!1 &1190216219
 GameObject:
   m_ObjectHideFlags: 0
@@ -2999,6 +3163,8 @@ MonoBehaviour:
   dayEnded: {fileID: 11400000, guid: 69b5800e2bdd1ca4c8520e3566e3debf, type: 2}
   escapeThroughDoor: {fileID: 11400000, guid: 9e5fde75eea545d46b271de10acb0303, type: 2}
   escapeThroughWindow: {fileID: 11400000, guid: 548f1b516ad31fc4faecc4752744b90e, type: 2}
+  heroStuck: {fileID: 11400000, guid: 9b4d2af2176839b45b35a2812e4023ca, type: 2}
+  heroReturnedToStation: {fileID: 11400000, guid: 47f91ae3eda30ad41b8aa66a7cbfdc32, type: 2}
   dailyManager: {fileID: 1411728931}
   escapeThroughDoorEnding: {fileID: 0}
   escapeThroughWindowEnding: {fileID: 0}
@@ -4217,6 +4383,77 @@ Transform:
   - {fileID: 1187514421913871086}
   m_Father: {fileID: 543450651609662277}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2063280816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2063280817}
+  - component: {fileID: 2063280818}
+  - component: {fileID: 2063280819}
+  m_Layer: 0
+  m_Name: BaseHeroTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2063280817
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063280816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 3.189, y: 0, z: 1.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 621247594}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &2063280818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063280816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16cc42f95dd64a39a2e09324893456d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayEnded: {fileID: 11400000, guid: 69b5800e2bdd1ca4c8520e3566e3debf, type: 2}
+  heroReturned: {fileID: 11400000, guid: 47f91ae3eda30ad41b8aa66a7cbfdc32, type: 2}
+  minTimeToReturn: 10
+--- !u!136 &2063280819
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2063280816}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.27093196
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: -0.22906804}
 --- !u!1 &2081237158
 GameObject:
   m_ObjectHideFlags: 0
@@ -8554,8 +8791,9 @@ GameObject:
   - component: {fileID: 4966093658888667469}
   - component: {fileID: 6119781624116645444}
   - component: {fileID: 6119781624116645445}
+  - component: {fileID: 6119781624116645446}
   m_Layer: 0
-  m_Name: BookTrumplin
+  m_Name: BookTrampoline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8609,6 +8847,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6119781624116645446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119781624116645443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57fdfd0ec09a4424b1ff13e46c3354e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayEnded: {fileID: 11400000, guid: 69b5800e2bdd1ca4c8520e3566e3debf, type: 2}
+  baseTransforms:
+  - {fileID: 232620905}
+  - {fileID: 1184620607}
+  - {fileID: 31760111}
+  - {fileID: 37314275}
 --- !u!23 &6211915193823591376
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -49,6 +49,13 @@ public class DailyManager : MonoBehaviour
 		timerCoroutine = StartCoroutine(StartDayTimer());
 	}
 
+	public void EarlyStopDay()
+	{
+		StopCoroutine(timerCoroutine);
+		timerCoroutine = null;
+		StartCoroutine(FinishDaySubroutine());
+	}
+
 	private IEnumerator StartDayTimer()
 	{
 		for (float time = 0; time < dayDuration; time += tickDuration)
@@ -56,7 +63,12 @@ public class DailyManager : MonoBehaviour
 			yield return new WaitForSeconds(tickDuration);
 			// TODO: time progress bar
 		}
-		
+
+		yield return FinishDaySubroutine();
+	}
+
+	private IEnumerator FinishDaySubroutine()
+	{
 		dimmerAnim.SetTrigger(DimAnimatorProperty);
 		yield return new WaitForSeconds(dimDelay);
 		dayEnded.Fire();

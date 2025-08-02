@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,6 +37,7 @@ public class MainHeroMovementController : MonoBehaviour
 	[Header("Configuration")]
 	[SerializeField] private Rigidbody rb;
 	[SerializeField] private Animator anim;
+	[SerializeField] private CustomEvent heroStuck;
 
 
 	private void OnEnable()
@@ -51,7 +53,6 @@ public class MainHeroMovementController : MonoBehaviour
 		rotateRight.performed += OnRotateRightStarted;
 		rotateLeft.performed += OnRotateLeftStarted;
 		lift.performed += OnLiftToggled;
-		
 		
 		moveForward.canceled += OnMoveForwardEnded;
 		moveBackward.canceled += OnMoveBackwardEnded;
@@ -128,6 +129,8 @@ public class MainHeroMovementController : MonoBehaviour
 	{
 		if (Vector3.Angle(Vector3.down, -transform.up) > maxAngleToDrive)
 		{
+			enabled = false;
+			StartCoroutine(Stuck());
 			return;
 		}
 
@@ -156,5 +159,11 @@ public class MainHeroMovementController : MonoBehaviour
 			rotation -= rotationSpeed * Time.deltaTime * transform.up;
 		}
 		rb.Move(position, Quaternion.Euler(rotation));
+	}
+
+	private IEnumerator Stuck()
+	{
+		yield return new WaitForSeconds(4f);
+		heroStuck.Fire();
 	}
 }

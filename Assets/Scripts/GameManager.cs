@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour, ICustomEventHandler
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	[SerializeField] private CustomEvent dayEnded;
 	[SerializeField] private CustomEvent escapeThroughDoor;
 	[SerializeField] private CustomEvent escapeThroughWindow;
+	[SerializeField] private CustomEvent heroStuck;
+	[SerializeField] private CustomEvent heroReturnedToStation;
 	
 	[SerializeField] private DailyManager dailyManager;
 	[SerializeField] private GameObject escapeThroughDoorEnding;
@@ -19,6 +22,8 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 		dayEnded.Subscribe(this);
 		escapeThroughDoor.Subscribe(this);
 		escapeThroughWindow.Subscribe(this);
+		heroStuck.Subscribe(this);
+		heroReturnedToStation.Subscribe(this);
 	}
 
 	private void OnDisable()
@@ -26,6 +31,8 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 		dayEnded.Unsubscribe(this);
 		escapeThroughDoor.Unsubscribe(this);
 		escapeThroughWindow.Unsubscribe(this);
+		heroStuck.Unsubscribe(this);
+		heroReturnedToStation.Unsubscribe(this);
 	}
 	
 	public void HandleEvent(CustomEvent.EventType eventType)
@@ -40,6 +47,12 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 				break;
 			case CustomEvent.EventType.EscapeThroughWindow:
 				OnEscapeThroughWindow();
+				break;
+			case CustomEvent.EventType.MainHeroStuck:
+				OnHeroStuck();
+				break;
+			case CustomEvent.EventType.MainHeroReturnedToStation:
+				OnHeroReturnedToStation();
 				break;
 		}
 	}
@@ -65,5 +78,17 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	{
 		dailyManager.enabled = false;
 		isGameOver = true;
+		// TODO: disable hero
+	}
+
+	private void OnHeroStuck()
+	{
+		// TODO: count stucks for bad ending
+		dailyManager.EarlyStopDay();
+	}
+
+	private void OnHeroReturnedToStation()
+	{
+		dailyManager.EarlyStopDay();
 	}
 }
