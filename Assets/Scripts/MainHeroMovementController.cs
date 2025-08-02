@@ -4,35 +4,54 @@ using UnityEngine.InputSystem;
 
 public class MainHeroMovementController : MonoBehaviour
 {
+	private static readonly int IsLiftedAnimatorProperty = Animator.StringToHash("IsLifted");
 	private InputAction moveForward;
 	private InputAction moveBackward;
 	private InputAction rotateRight;
 	private InputAction rotateLeft;
+	private InputAction lift;
 	
 	private bool movingForward = false;
 	private bool movingBackward = false;
 	private bool rotatingRight = false;
 	private bool rotatingLeft = false;
 
+	private bool isLifted;
+	private bool IsLifted
+	{
+		get => isLifted;
+		set
+		{
+			anim.SetBool(IsLiftedAnimatorProperty, value);
+			isLifted = value;
+		}
+	}
+
 	[Header("Movement Settings")]
 	[SerializeField] private float forwardMoveSpeed;
 	[SerializeField] private float backwardMoveSpeed;
 	[SerializeField] private float rotationSpeed;
+	[SerializeField] private float liftHeight;
 	
 	[Header("Configuration")]
 	[SerializeField] private Rigidbody rb;
-	
+	[SerializeField] private Animator anim;
+
+
 	private void OnEnable()
 	{
 		moveForward = InputSystem.actions.FindAction("MoveForward");
 		moveBackward = InputSystem.actions.FindAction("MoveBackward");
 		rotateRight = InputSystem.actions.FindAction("RotateRight");
 		rotateLeft = InputSystem.actions.FindAction("RotateLeft");
+		lift = InputSystem.actions.FindAction("lift");
 
 		moveForward.performed += OnMoveForwardStarted;
 		moveBackward.performed += OnMoveBackwardStarted;
 		rotateRight.performed += OnRotateRightStarted;
 		rotateLeft.performed += OnRotateLeftStarted;
+		lift.performed += OnLiftToggled;
+		
 		
 		moveForward.canceled += OnMoveForwardEnded;
 		moveBackward.canceled += OnMoveBackwardEnded;
@@ -46,11 +65,17 @@ public class MainHeroMovementController : MonoBehaviour
 		moveBackward.performed -= OnMoveBackwardStarted;
 		rotateRight.performed -= OnRotateRightStarted;
 		rotateLeft.performed -= OnRotateLeftStarted;
+		lift.performed -= OnLiftToggled;
 		
 		moveForward.canceled -= OnMoveForwardEnded;
 		moveBackward.canceled -= OnMoveBackwardEnded;
 		rotateRight.canceled -= OnRotateRightEnded;
 		rotateLeft.canceled -= OnRotateLeftEnded;
+	}
+
+	private void OnLiftToggled(InputAction.CallbackContext obj)
+	{
+		IsLifted = !IsLifted;
 	}
 
 	private void OnMoveForwardStarted(InputAction.CallbackContext context)
