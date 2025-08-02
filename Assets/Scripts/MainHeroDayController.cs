@@ -36,7 +36,7 @@ public class MainHeroDayController : MonoBehaviour, ICustomEventHandler
 #endif
 	}
 	
-	[ContextMenu("On Day Ended")]
+	[ContextMenu("Reset to base")]
 	private void OnDayEnded()
 	{
 		StartCoroutine(ResetToBase());

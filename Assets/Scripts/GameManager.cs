@@ -10,9 +10,17 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	[SerializeField] private CustomEvent heroReturnedToStation;
 	
 	[SerializeField] private DailyManager dailyManager;
+	[SerializeField] private DustGeneration dustGeneration;
 	[SerializeField] private GameObject escapeThroughDoorEnding;
 	[SerializeField] private GameObject escapeThroughWindowEnding;
+	[SerializeField] private GameObject strikesEnding;
+	
+	[Header("Settings")]
+	[SerializeField] private int maxRemainingDustAllowed = 6;
+	[SerializeField] private int maxStrikesAllowed = 30;
 
+	[Header("Runtime")]
+	[SerializeField] private int strikes = 0;
 	private bool isGameOver = false;
 
 	private void OnEnable()
@@ -57,7 +65,12 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 
 	private void OnDayEnded()
 	{
-		// TODO
+		if (dustGeneration.dustRemaining > maxRemainingDustAllowed)
+		{
+			GetStrike();
+		}
+		dustGeneration.ClearRemainingDust();
+		dustGeneration.GenerateDust();
 	}
 
 	private void OnEscapeThroughDoor()
@@ -69,7 +82,17 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	private void OnEscapeThroughWindow()
 	{
 		EndGame();
-		escapeThroughDoorEnding.SetActive(true);
+		escapeThroughWindowEnding.SetActive(true);
+	}
+
+	private void GetStrike()
+	{
+		++strikes;
+		if (strikes >= maxStrikesAllowed)
+		{
+			EndGame();
+			strikesEnding.SetActive(true);
+		}
 	}
 
 	private void EndGame()
@@ -77,11 +100,12 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 		dailyManager.enabled = false;
 		isGameOver = true;
 		// TODO: disable hero
+		// TODO: change camera
 	}
 
 	private void OnHeroStuck()
 	{
-		// TODO: count stucks for bad ending
+		GetStrike();
 		dailyManager.EarlyStopDay();
 	}
 

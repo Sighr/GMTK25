@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3969777888587482582}
   - component: {fileID: 6738885876361627831}
   - component: {fileID: -6580118871530885107}
+  - component: {fileID: 3240472269800005308}
   m_Layer: 0
   m_Name: Dust4
   m_TagString: Untagged
@@ -100,3 +101,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generator: {fileID: 0}
+--- !u!136 &3240472269800005308
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248255105914831643}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.008303474
+  m_Height: 0.017008137
+  m_Direction: 1
+  m_Center: {x: -0.00036076593, y: -0.00066260033, z: 0.001355805}
