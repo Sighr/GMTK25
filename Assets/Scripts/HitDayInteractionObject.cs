@@ -6,8 +6,8 @@ public class HitDayInteractionObject : DayInteractionObject
 	[Header("Configuration")]
 	[SerializeField] private List<GameObject> objectsToDisable;
 	[SerializeField] private List<GameObject> objectsToEnable;
-	[SerializeField] private List<MonoBehaviour> componentsToDisable;
-	[SerializeField] private List<MonoBehaviour> componentsToEnable;
+	[SerializeField] private List<Rigidbody> rbsToDisable;
+	[SerializeField] private List<Rigidbody> rbsToEnable;
 
 	[SerializeField] private bool useNormal;
 	[SerializeField] private Vector3 normal;
@@ -28,14 +28,14 @@ public class HitDayInteractionObject : DayInteractionObject
 			go.SetActive(true);		
 		}
 		
-		foreach (MonoBehaviour component in componentsToDisable)
+		foreach (Rigidbody rb in rbsToDisable)
 		{
-			component.enabled = false;
+			rb.isKinematic = true;
 		}
 		
-		foreach (MonoBehaviour component in componentsToEnable)
+		foreach (Rigidbody rb in rbsToEnable)
 		{
-			component.enabled = true;
+			rb.isKinematic = false;
 		}
 	}
 
