@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 83365905}
   m_Layer: 11
   m_Name: MainHero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -548,6 +548,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 283395115}
   m_CullTransparentMesh: 1
+--- !u!1 &296302268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 296302269}
+  - component: {fileID: 296302271}
+  - component: {fileID: 296302270}
+  m_Layer: 0
+  m_Name: PCDamageCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &296302269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296302268}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3.662, y: 0.134, z: 1.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 621247594}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296302270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296302268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab42136d31d49dd9c39ba75684fb01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dayEnded: {fileID: 11400000, guid: 69b5800e2bdd1ca4c8520e3566e3debf, type: 2}
+  objectsToDisable:
+  - {fileID: 296302268}
+  - {fileID: 1160931348}
+  objectsToEnable: []
+  useNormal: 0
+  normal: {x: 0, y: 0, z: 0}
+  maxNormalsAngle: 0
+  isInteractable: 1
+--- !u!65 &296302271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 296302268}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.07996297, y: 0.14986804, z: 0.2390464}
+  m_Center: {x: 0, y: 0, z: -0.12682202}
 --- !u!1 &307072133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1115,6 +1190,7 @@ Transform:
   - {fileID: 954503185}
   - {fileID: 427948736}
   - {fileID: 1550721265}
+  - {fileID: 296302269}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650820925
@@ -2886,7 +2962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30badc34cb74ce7a8502189a39a8063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 180
+  dayDuration: 30
   tickDuration: 1
   dimDelay: 1
   dayEnded: {fileID: 11400000, guid: 69b5800e2bdd1ca4c8520e3566e3debf, type: 2}
@@ -7274,6 +7350,7 @@ GameObject:
   - component: {fileID: 9208844568349794048}
   - component: {fileID: 3948623983717921042}
   - component: {fileID: 9208844568349794049}
+  - component: {fileID: 9208844568349794050}
   m_Layer: 0
   m_Name: PC1MOVE
   m_TagString: Untagged
@@ -7541,7 +7618,7 @@ Transform:
   m_GameObject: {fileID: 6119781624116645443}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071069, y: 0, z: 0, w: 0.7071067}
-  m_LocalPosition: {x: -3.2420392, y: 0.03555307, z: 0.58774257}
+  m_LocalPosition: {x: -3.2420392, y: 0.03555307, z: -0.759}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8476,6 +8553,7 @@ GameObject:
   - component: {fileID: 2217889696789737881}
   - component: {fileID: 4966093658888667469}
   - component: {fileID: 6119781624116645444}
+  - component: {fileID: 6119781624116645445}
   m_Layer: 0
   m_Name: BookTrumplin
   m_TagString: Untagged
@@ -8504,6 +8582,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0019605588, y: 0.002852406, z: 0.0003892986}
   m_Center: {x: -0.000012214184, y: -0.0000000014901161, z: -0.00007045064}
+--- !u!54 &6119781624116645445
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6119781624116645443}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!23 &6211915193823591376
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10126,7 +10231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7591164503360947135
 Transform:
   m_ObjectHideFlags: 0
@@ -11600,6 +11705,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.00011355557, y: 0.0044860686, z: 0.004486068}
   m_Center: {x: -0.0000000035779522, y: -8.23316e-19, z: 6.16683e-19}
+--- !u!54 &9208844568349794050
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4408326000810651018}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
