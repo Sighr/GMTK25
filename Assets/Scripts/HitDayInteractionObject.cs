@@ -1,10 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class HitDayInteractionObject : DayInteractionObject
 {
 	[Header("Configuration")]
-	[SerializeField] private GameObject interactableObject;
-	[SerializeField] private GameObject nonInteractableObject;
+	[SerializeField] private List<GameObject> objectsToDisable;
+	[SerializeField] private List<GameObject> objectsToEnable;
 
 	[SerializeField] private bool useNormal;
 	[SerializeField] private Vector3 normal;
@@ -15,8 +16,15 @@ public class HitDayInteractionObject : DayInteractionObject
 	
 	protected override void PerformInteractionChange()
 	{
-		interactableObject.SetActive(false);
-		nonInteractableObject.SetActive(true);
+		foreach (GameObject interactableObject in objectsToDisable)
+		{
+			interactableObject.SetActive(false);
+		}
+
+		foreach (GameObject nonInteractableObject in objectsToEnable)
+		{
+			nonInteractableObject.SetActive(true);		
+		}
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -26,7 +34,7 @@ public class HitDayInteractionObject : DayInteractionObject
 			return;
 		}
 		
-		if (collision.gameObject.layer != LayerMask.NameToLayer("MainHero"))
+		if (!collision.gameObject.CompareTag("Player"))
 		{
 			return;
 		}
