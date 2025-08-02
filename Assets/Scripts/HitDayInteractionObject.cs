@@ -27,16 +27,6 @@ public class HitDayInteractionObject : DayInteractionObject
 		{
 			go.SetActive(true);		
 		}
-		
-		foreach (Rigidbody rb in rbsToDisable)
-		{
-			rb.isKinematic = true;
-		}
-		
-		foreach (Rigidbody rb in rbsToEnable)
-		{
-			rb.isKinematic = false;
-		}
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -64,7 +54,14 @@ public class HitDayInteractionObject : DayInteractionObject
 		isInteractable = false;
 		wasInteractedToday = true;
 
-		// TODO: animation
-		// PerformAnimation();
+		foreach (Rigidbody rb in rbsToDisable)
+		{
+			rb.isKinematic = true;
+		}
+		
+		foreach (Rigidbody rb in rbsToEnable)
+		{
+			rb.isKinematic = false;
+		}
 	}
 }

@@ -38,7 +38,16 @@ public class DailyManager : MonoBehaviour
 
 	private void OnDisable()
 	{
-		StopCoroutine(timerCoroutine);
+		StopDailyCoroutine();
+	}
+
+	private void StopDailyCoroutine()
+	{
+		if (timerCoroutine != null)
+		{
+			StopCoroutine(timerCoroutine);
+		}
+
 		timerCoroutine = null;
 	}
 
@@ -50,8 +59,7 @@ public class DailyManager : MonoBehaviour
 
 	public void EarlyStopDay()
 	{
-		StopCoroutine(timerCoroutine);
-		timerCoroutine = null;
+		StopDailyCoroutine();
 		StartCoroutine(FinishDaySubroutine());
 	}
 
