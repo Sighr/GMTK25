@@ -6,6 +6,8 @@ public class HitDayInteractionObject : DayInteractionObject
 	[Header("Configuration")]
 	[SerializeField] private List<GameObject> objectsToDisable;
 	[SerializeField] private List<GameObject> objectsToEnable;
+	[SerializeField] private List<MonoBehaviour> componentsToDisable;
+	[SerializeField] private List<MonoBehaviour> componentsToEnable;
 
 	[SerializeField] private bool useNormal;
 	[SerializeField] private Vector3 normal;
@@ -16,14 +18,24 @@ public class HitDayInteractionObject : DayInteractionObject
 	
 	protected override void PerformInteractionChange()
 	{
-		foreach (GameObject interactableObject in objectsToDisable)
+		foreach (GameObject go in objectsToDisable)
 		{
-			interactableObject.SetActive(false);
+			go.SetActive(false);
 		}
 
-		foreach (GameObject nonInteractableObject in objectsToEnable)
+		foreach (GameObject go in objectsToEnable)
 		{
-			nonInteractableObject.SetActive(true);		
+			go.SetActive(true);		
+		}
+		
+		foreach (MonoBehaviour component in componentsToDisable)
+		{
+			component.enabled = false;
+		}
+		
+		foreach (MonoBehaviour component in componentsToEnable)
+		{
+			component.enabled = true;
 		}
 	}
 
