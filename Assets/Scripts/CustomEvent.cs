@@ -26,7 +26,8 @@ public class CustomEvent : ScriptableObject
 
 	public void Fire()
 	{
-		foreach (var subscriber in subscribers)
+		var subscribersLocalCopy = new List<ICustomEventHandler>(subscribers);
+		foreach (var subscriber in subscribersLocalCopy)
 		{
 			subscriber.HandleEvent(eventType);
 		}
