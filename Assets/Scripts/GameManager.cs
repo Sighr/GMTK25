@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	[SerializeField] private GameObject escapeThroughDoorEnding;
 	[SerializeField] private GameObject escapeThroughWindowEnding;
 	[SerializeField] private GameObject strikesEnding;
+	[SerializeField] private GameObject hero;
+	[SerializeField] private GameObject endGameCamera;
+	[SerializeField] private GameObject gameHUD;
 	
 	[Header("Settings")]
 	[SerializeField] private int maxRemainingDustAllowed = 6;
@@ -99,8 +102,9 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	{
 		dailyManager.enabled = false;
 		isGameOver = true;
-		// TODO: disable hero
-		// TODO: change camera
+		hero.SetActive(false);
+		endGameCamera.SetActive(true);
+		gameHUD.SetActive(false);
 	}
 
 	private void OnHeroStuck()
