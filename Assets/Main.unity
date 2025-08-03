@@ -3418,8 +3418,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.96461993, y: 0.6444271, z: 0.21908092}
-  m_Center: {x: -0.07295719, y: -0.009617565, z: -0.001162719}
+  m_Size: {x: 1.3055958, y: 0.6444271, z: 0.21908092}
+  m_Center: {x: 0.09753092, y: -0.009617565, z: -0.0011627227}
 --- !u!1 &1082504873
 GameObject:
   m_ObjectHideFlags: 0
@@ -9377,8 +9377,8 @@ MonoBehaviour:
   dustContainer: {fileID: 3061246247277806396}
   dustMinAmount: 4
   dustMaxAmount: 10
-  dustMinScale: 0.7
-  dustMaxScale: 1.1
+  dustMinScale: 1.1
+  dustMaxScale: 5
   dustRemaining: 0
 --- !u!23 &1940196460080478084
 MeshRenderer:
@@ -12088,7 +12088,7 @@ Transform:
   m_GameObject: {fileID: 4408326000810651018}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70751095, y: -0.011320244, z: 0.033167616, w: 0.7058329}
-  m_LocalPosition: {x: -3.5889966, y: 0.22600001, z: 1.2173269}
+  m_LocalPosition: {x: -3.585, y: 0.226, z: 1.353}
   m_LocalScale: {x: 62.81923, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13681,7 +13681,7 @@ HingeJoint:
   serializedVersion: 3
   m_ConnectedBody: {fileID: 0}
   m_ConnectedArticulationBody: {fileID: 0}
-  m_Anchor: {x: 0, y: 0, z: 0}
+  m_Anchor: {x: 0, y: 0, z: -0.0005}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
   m_ConnectedAnchor: {x: 0, y: 0, z: 0}
