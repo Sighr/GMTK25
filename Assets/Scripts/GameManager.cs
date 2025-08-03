@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	[Header("Runtime")]
 	[SerializeField] private int strikes = 0;
 	private bool isGameOver = false;
+	private bool hadStrikeThisDay = false;
 
 	private void OnEnable()
 	{
@@ -72,8 +73,10 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 		{
 			GetStrike();
 		}
+
 		dustGeneration.ClearRemainingDust();
 		dustGeneration.GenerateDust();
+		hadStrikeThisDay = false;
 	}
 
 	private void OnEscapeThroughDoor()
@@ -90,6 +93,11 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 
 	private void GetStrike()
 	{
+		if (hadStrikeThisDay)
+		{
+			return;
+		}
+		hadStrikeThisDay = true;
 		++strikes;
 		if (strikes >= maxStrikesAllowed)
 		{
