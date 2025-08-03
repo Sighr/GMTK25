@@ -23,10 +23,20 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	[SerializeField] private int maxRemainingDustAllowed = 6;
 	[SerializeField] private int maxStrikesAllowed = 30;
 
-	[Header("Runtime")]
-	[SerializeField] private int strikes = 0;
+	private int strikes;
 	private bool isGameOver = false;
 	private bool hadStrikeThisDay = false;
+
+	public int Strikes
+	{
+		get => strikes;
+		set
+		{
+			strikes = value;
+			
+			ratingController.SetRating(1 - (float) strikes / maxStrikesAllowed);
+		}
+	}
 
 	private void OnEnable()
 	{
@@ -99,8 +109,8 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 			return;
 		}
 		hadStrikeThisDay = true;
-		++strikes;
-		if (strikes >= maxStrikesAllowed)
+		++Strikes;
+		if (Strikes >= maxStrikesAllowed)
 		{
 			EndGame();
 			strikesEnding.SetActive(true);
