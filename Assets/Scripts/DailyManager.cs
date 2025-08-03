@@ -26,7 +26,7 @@ public class DailyManager : MonoBehaviour
 		get => currentDay;
 		set
 		{
-			currentDayText.text = $"Day {value}";
+			currentDayText.text = $"Loop {value}";
 			currentDay = value;
 		}
 	}
