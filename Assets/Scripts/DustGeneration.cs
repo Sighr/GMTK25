@@ -46,6 +46,7 @@ public class DustGeneration : MonoBehaviour
 			DustTrigger dustPrefab = dustPrefabs[Random.Range(0, dustPrefabs.Count)];
 			Quaternion rotation = Quaternion.Euler(dustPrefab.transform.rotation.eulerAngles + Vector3.up * Random.Range(0, 360));
 			DustTrigger instantiated = Instantiate(dustPrefab, spawnPoint.position, rotation, dustContainer);
+			instantiated.transform.localScale = Vector3.one * Random.Range(dustMinScale, dustMaxScale);
 			instantiated.generator = this;
 		}
 
