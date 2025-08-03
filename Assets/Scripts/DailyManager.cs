@@ -15,6 +15,7 @@ public class DailyManager : MonoBehaviour
 	[SerializeField] private CustomEvent dayEnded;
 	[SerializeField] private Animator dimmerAnim;
 	[SerializeField] private TextMeshProUGUI currentDayText;
+	[SerializeField] private ChargeController chargeController;
 	[SerializeField] private AudioSource suckingSoundSource;
 	[SerializeField] private AudioSource startSuckingSoundSource;
 	
@@ -72,7 +73,7 @@ public class DailyManager : MonoBehaviour
 		for (float time = 0; time < dayDuration; time += tickDuration)
 		{
 			yield return new WaitForSeconds(tickDuration);
-			// TODO: time progress bar
+			chargeController.SetCharge((dayDuration - time) / dayDuration);
 		}
 
 		yield return FinishDaySubroutine();
