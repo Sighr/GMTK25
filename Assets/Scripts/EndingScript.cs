@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndingScript : MonoBehaviour
 {
-	[Header("Customisation")]
+	[Header("Configuration")]
 	[SerializeField] private GameObject anyKeyText;
 	
 	[Header("Settings")]

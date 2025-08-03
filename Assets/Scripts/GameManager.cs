@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour, ICustomEventHandler
 	
 	[SerializeField] private DailyManager dailyManager;
 	[SerializeField] private DustGeneration dustGeneration;
+	[SerializeField] private StarRatingController ratingController;
 	[SerializeField] private GameObject escapeThroughDoorEnding;
 	[SerializeField] private GameObject escapeThroughWindowEnding;
 	[SerializeField] private GameObject strikesEnding;

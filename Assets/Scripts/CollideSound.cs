@@ -4,8 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class CollideSound : MonoBehaviour
 {
-	[Header("Customisation")] [SerializeField]
-	private AudioSource source;
+	[Header("Configuration")]
+	[SerializeField] private AudioSource source;
 
 	[Header("Settings")] [SerializeField] private string tagToCompare = "Player";
 	[SerializeField] private float soundDelay = 0f;

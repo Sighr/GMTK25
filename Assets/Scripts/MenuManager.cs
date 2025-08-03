@@ -2,7 +2,7 @@
 
 public class MenuManager : MonoBehaviour
 {
-	[Header("Customisation")]
+	[Header("Configuration")]
 	[SerializeField] private MainHeroMovementController movementController;
 	[SerializeField] private DailyManager dailyManager;
 	[SerializeField] private GameObject menu;
