@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Wall
   - Ladder
+  - Dust
   layers:
   - Default
   - TransparentFX
