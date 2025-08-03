@@ -15,6 +15,8 @@ public class DailyManager : MonoBehaviour
 	[SerializeField] private CustomEvent dayEnded;
 	[SerializeField] private Animator dimmerAnim;
 	[SerializeField] private TextMeshProUGUI currentDayText;
+	[SerializeField] private AudioSource suckingSoundSource;
+	[SerializeField] private AudioSource startSuckingSoundSource;
 	
 	[Header("Runtime")]
 	[SerializeField] private int currentDay;
@@ -53,6 +55,8 @@ public class DailyManager : MonoBehaviour
 
 	private void StartNewDay()
 	{
+		startSuckingSoundSource.Play();
+		suckingSoundSource.PlayDelayed(2f);
 		++CurrentDay;
 		timerCoroutine = StartCoroutine(StartDayTimer());
 	}
@@ -77,6 +81,7 @@ public class DailyManager : MonoBehaviour
 	private IEnumerator FinishDaySubroutine()
 	{
 		dimmerAnim.SetTrigger(DimAnimatorProperty);
+		suckingSoundSource.Stop();
 		yield return new WaitForSeconds(dimDelay);
 		dayEnded.Fire();
 		yield return new WaitForSeconds(dimDelay);
